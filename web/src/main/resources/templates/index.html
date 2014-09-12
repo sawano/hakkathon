@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<!--
+  ~ Copyright 2014 Daniel Sawano
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~   http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<html lang="en">
+<head lang="en">
+    <meta charset="UTF-8"/>
+    <title>Lets play Chicken!</title>
+    <link rel="stylesheet" type="text/css" th:href="@{webjars/bootstrap/3.2.0/css/bootstrap.min.css}"/>
+    <style>
+        body {
+            padding: 20px;
+        }
+
+        .score-table {
+            width: 800px;
+        }
+    </style>
+</head>
+<body onload="fetchData()">
+<h1>Scoreboard</h1>
+
+<div>
+    <button id="reset-button" name="reset-button" class="btn btn-default btn-sm" type="button"
+            data-container="body" data-toggle="popover"
+            data-placement="right" data-content="Scores has been reset."
+            onclick="resetScoreboard()">Reset
+    </button>
+</div>
+<div class="center-block">
+    <table class="table table-condensed table-striped score-table" id="scoresTable" name="scoresTable">
+        <thead>
+        <tr>
+            <th width="20" class="">#</th>
+            <th>Driver</th>
+            <th width="30">Score</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="driverStats : ${allDrivers}">
+            <td th:text="${count}">1</td>
+            <td th:text="${driverStats.driverId().alias()}">John Doe</td>
+            <td th:text="${driverStats.score()}">123</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+<script th:src="@{webjars/jquery/1.11.1/jquery.min.js}"/>
+<script th:src="@{webjars/bootstrap//3.2.0/js/bootstrap.min.js}"/>
+<script th:src="@{web.js}" src="../static/web.js"/>
+<script>$(function () {
+    $("[data-toggle='popover']").popover();
+});</script>
+</html>
