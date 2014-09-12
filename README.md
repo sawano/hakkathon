@@ -30,5 +30,11 @@ Get to know the basics of Akka in a fun and playful way.
 
 For a quick introduction to Akka, watch the first 6 minutes of this presentation: http://parleys.com/play/5302014de4b0c04daeac9df5
 
+##Running the code
+To start the server you simply run the main method in `ScoreBoardController`
 
+To test your driver implementation you can use the `DriverActorTest`. Just replace the actor class with your implementation.
+
+If you want ot place your server outside your local subnet then edit the 'hostname' and 'server-ip' values in 
+`application-racecourse.conf` and `application.conf` respectively and change the way racecourse lookup is performed (see javadoc).
 
