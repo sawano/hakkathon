@@ -77,7 +77,7 @@ public class RacecourseService {
     private static ActorRef resolveRemoteActor(final ActorContext context, final String serverPath) {
         try {
             final ActorSelection actorSelection = context.actorSelection(serverPath);
-            final Future<ActorRef> actorRefFuture = actorSelection.resolveOne(Duration.create(1, SECONDS));
+            final Future<ActorRef> actorRefFuture = actorSelection.resolveOne(Duration.create(4, SECONDS));
             return Await.result(actorRefFuture, LOOKUP_TIMEOUT);
         } catch (Exception e) {
             throw new RuntimeException("Unable to look up racecourse", e);
